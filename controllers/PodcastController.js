@@ -1,3 +1,4 @@
+const puppeteer = require("puppeteer");
 const Podcast = require("../model/podcast");
 
 createPodcast = (link) => {
@@ -22,7 +23,7 @@ createPodcast = (link) => {
             title: item.querySelector("a.title").getAttribute("title"),
             date: item.querySelector("span.datetime").innerHTML,
             ratings: 0,
-            link: "red",
+            link: item.querySelector("a.download").getAttribute("href"),
           });
         });
         results = { ...results, episodes: episodes };
